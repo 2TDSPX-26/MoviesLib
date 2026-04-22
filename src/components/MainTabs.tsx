@@ -17,7 +17,7 @@ export default function MainTabs() {
                 tabBarIcon: ({color, size}) => {
                     let iconName: string;
                     switch (route.name) {
-                        case "MovieListScren":
+                        case "MovieListScreen":
                             iconName = "movie"
                             break
                         case "MapScreen":

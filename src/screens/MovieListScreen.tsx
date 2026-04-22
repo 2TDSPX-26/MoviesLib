@@ -1,9 +1,17 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { useNavigation } from "@react-navigation/native"
 
 export default function MovieListScreen() {
+
+    const navigation = useNavigation()
+
     return(
         <View style={styles.container}>
             <Text>MovieListScreen</Text>
+            <Button
+                title="Ir para tela de detalhes"
+                onPress={() => navigation.navigate("MovieDetailsScreen")}
+            />
         </View>
     )
 }
