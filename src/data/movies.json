@@ -1,0 +1,92 @@
+[
+	{
+		"id": 1,
+		"title": "Devoradores de Estrelas",
+		"categories": "Aventura, Ficção Científica, Comédia",
+		"duration": "2h 36min",
+		"rating": 8.4,
+		"synopsis": "Um astronauta tenta salvar a Terra enquanto está sozinho no espaço sideral.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BNTJlOTRhMGMtOTI5MC00ZmEyLWE3NDItMDBiMDRkYTFiMTY2XkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 2,
+		"title": "Super Mario Galaxy: O Filme",
+		"categories": "Ação, Aventura, Animação, Comédia",
+		"duration": "1h 38min",
+		"rating": 6.4,
+		"synopsis": "Depois de derrotar Bowser e salvar o Brooklyn, Mario e seus amigos enfrentam uma nova ameaça: Wario, com Bowser Jr., conspiram para dominar o mundo. Eles devem se unir a Yoshi para deter essa dupla maligna.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BYmM2NGY2NjktZTAwMi00M2Q4LWE0MTktN2M2NDgwZDQxYWY2XkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 3,
+		"title": "Michael",
+		"categories": "Biografia, Drama, Música",
+		"duration": "2h 7min",
+		"rating": 7.6,
+		"synopsis": "Filme biográfico sobre o rei do pop, Michael Jackson. Ele retratará o cantor desde seus primeiros dias até sua trágica morte em 2009.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BODBmOWMwMGUtMWVhOC00NGUzLWI4MTktODkyNjdmMzdmYjg0XkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 4,
+		"title": "A Hora do Mal",
+		"categories": "Terror, Horror, Mistério",
+		"duration": "2h 8min",
+		"rating": 7.4,
+		"synopsis": "Um épico de terror de várias histórias interrelacionadas sobre o desaparecimento de estudantes do ensino médio em uma pequena cidade.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BZmI5Y2JmNTItMmRhNC00ZjcxLTg0MjgtYzVlMzA1YzhmMWVmXkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 5,
+		"title": "O Agente Secreto",
+		"categories": "Drama, Mistério, Suspense, Crime",
+		"duration": "2h 41min",
+		"rating": 7.2,
+		"synopsis": "Em 1977, um especialista em tecnologia foge de um passado misterioso e retorna à sua cidade natal, Recife, em busca de paz. Ele logo percebe que a cidade está longe de ser o refúgio que procurava.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BZDgxOGYwNDQtOGZhMi00MjBhLWIwOTUtYTg1ZWNiYTgzMjU4XkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 6,
+		"title": "Uma Batalha Após a Outra",
+		"categories": "Ação, Crime, Drama",
+		"duration": "2h 41min",
+		"rating": 7.7,
+		"synopsis": "Quando seu inimigo maligno ressurge após 16 anos, um grupo de ex-revolucionários se reúne para resgatar a filha de um dos seus.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BMzBkZmQ0NjMtNTZlMy00ZjdlLTg5ODUtYWFlNGM0YzE3MTg0XkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 7,
+		"title": "Pecadores",
+		"categories": "Ação, Drama, Horror, Suspense",
+		"duration": "2h 17min",
+		"rating": 7.5,
+		"synopsis": "Dispostos a deixar suas vidas conturbadas para trás, irmãos gêmeos retornam à cidade natal para recomeçar suas vidas do zero, quando descobrem que um mal ainda maior está à espera deles para recebê-los de volta.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BNjIwZWY4ZDEtMmIxZS00NDA4LTg4ZGMtMzUwZTYyNzgxMzk5XkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 8,
+		"title": "Maldição da Múmia",
+		"categories": "Horror, Terror",
+		"duration": "2h 14min",
+		"rating": 6.4,
+		"synopsis": "Uma família se depara com uma múmia ancestral, desencadeando uma aventura sobrenatural que mistura terror e suspense em uma nova versão do monstro clássico.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BNDFhMjMxMDgtNjA1NS00NmEzLTg5YjEtMWJkNTY4NTUxMWEzXkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 9,
+		"title": "Zootopia 2",
+		"categories": "Animação, Aventura, Comédia",
+		"duration": "1h 48min",
+		"rating": 7.4,
+		"synopsis": "A corajosa coelha policial Judy Hopps e seu amigo, a raposa Nick Wilde, unem-se novamente para solucionar um novo caso, o mais perigoso e intrincado de suas carreiras.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BZmI4M2JjYjgtZTA4Mi00N2IyLWI3MjYtMGJjZGQxYzA5NGY1XkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+		"id": 10,
+		"title": "Guerreiras do K-Pop",
+		"categories": "Animação, Aventura, Comédia, Ação",
+		"duration": "1h 35min",
+		"rating": 7.4,
+		"synopsis": "Um grupo feminino de K-Pop de renome mundial está conciliando sua vida sob os holofotes com sua identidade secreta como caçadora de demônios.",
+		"poster": "https://m.media-amazon.com/images/M/MV5BNTBiYWJlMjQtOTIyMy00NTY4LWFhOWItOWZhNzc3NGMyMjc2XkEyXkFqcGc@._V1_.jpg"
+	}
+]
