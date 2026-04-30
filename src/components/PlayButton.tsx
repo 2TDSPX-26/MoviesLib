@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         borderRadius: 21,
         justifyContent: 'space-between',
         alignItems: 'center',
+        alignSelf: 'flex-start',
         marginVertical: 2,
     },
     playButton: {

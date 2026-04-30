@@ -88,5 +88,14 @@
 		"rating": 7.4,
 		"synopsis": "Um grupo feminino de K-Pop de renome mundial está conciliando sua vida sob os holofotes com sua identidade secreta como caçadora de demônios.",
 		"poster": "https://m.media-amazon.com/images/M/MV5BNTBiYWJlMjQtOTIyMy00NTY4LWFhOWItOWZhNzc3NGMyMjc2XkEyXkFqcGc@._V1_.jpg"
+	},
+	{
+	    "id": 11,
+        "title": "F1: O Filme",
+        "duration": "2 h 35 min",
+        "categories": "Motosport, Ação, Drama, Esporte",
+        "poster": "https://m.media-amazon.com/images/M/MV5BNDkwNjc2OTEtYWNkNS00Mjc1LWJmMDYtYWVhNDA1MjBiYjU4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        "synopsis": "Um piloto de Fórmula 1 sai da aposentadoria para orientar e formar equipe com um piloto mais jovem.",
+        "rating": 7.8
 	}
 ]
