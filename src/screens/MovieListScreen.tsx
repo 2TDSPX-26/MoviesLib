@@ -1,14 +1,75 @@
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
-import { useNavigation } from "@react-navigation/native"
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    FlatList,
+    ActivityIndicator,
+    RefreshControl,
+    Alert,
+    Pressable
+} from "react-native";
+import { SwipeListView } from "react-native-swipe-list-view";
+import { useCallback } from 'react'
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
-import MovieRow from "../components/MovieRow";
-
-import movies from "../data/movies.json"
+import MovieRow, { Movie } from "../components/MovieRow";
+// import movies from "../data/movies.json"
+import { getMovies } from "../services/movieService";
 
 export default function MovieListScreen() {
     const navigation = useNavigation()
+    const queryClient = useQueryClient()
 
+    const { data: movies, isLoading, isError, refetch, isFetching } = useQuery({
+        queryKey: ["movies"],
+        queryFn: getMovies,
+        select: (data) => data.sort((a: Movie, b: Movie) => a.title.localeCompare(b.title)),
+    })
+
+    const renderHiddenItem = (data) => (
+        <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={() => {
+                Alert.alert(
+                    "Confirmar Exclusão",
+                    "Tem certeza que deseja excluir esse filme?",
+                    [
+                        {text: "Cancelar", style: "cancel"},
+                        {text: "Excluir", style: "destructive", onPress: () => {}},
+                    ],
+                    { cancelable: true }
+                )
+            }}
+        >
+            <Text style={styles.deleteButtonText}>Excluir</Text>
+        </TouchableOpacity>
+    )
+
+    useFocusEffect(
+        useCallback(() => {
+            queryClient.invalidateQueries({queryKey: ["movies"]})
+        }, [queryClient])
+    )
+
+    if (isLoading) {
+        return(
+            <View style={styles.center}>
+                <ActivityIndicator size="large" color="#EB4435" />
+            </View>
+        )
+    }
+
+    if (isError) {
+        return(
+            <View style={styles.center}>
+                <Text>Erro ao carregar os filmes!!</Text>
+            </View>
+        )
+    }
+    
     return(
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
@@ -41,6 +102,9 @@ export default function MovieListScreen() {
 }
 
 const styles = StyleSheet.create({
+    center: {},
+    deleteButtonText: {},
+    deleteButton: {},
     formButton: {
         color: '#eb4435',
         fontSize: 32,

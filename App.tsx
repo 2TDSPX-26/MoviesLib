@@ -5,49 +5,53 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainTabs from './src/components/MainTabs';
 import MovieDetailsScreen from './src/screens/MovieDetailsScreen';
 import MovieFormScreen from './src/screens/MovieFormScreen';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const Stack = createNativeStackNavigator()
+const queryClient = new QueryClient()
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name='MainTabs'
-          component={MainTabs}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="MovieDetailsScreen"
-          component={MovieDetailsScreen}
-          options={({ navigation, route }) => ({
-            headerBackButtonDisplayMode: "minimal",
-            headerTitle: "",
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => navigation.navigate("MovieFormScreen", { movie: route.params?.movie })}
-              >
-                <Text style={styles.navButton}>Editar</Text>
-              </TouchableOpacity>
-            )
-          })}
-        />
-        <Stack.Screen
-          name="MovieFormScreen"
-          component={MovieFormScreen}
-          options={({ navigation }) => ({
-            headerBackButtonDisplayMode: "minimal",
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => navigation.popToTop()}
-              >
-                <Text style={styles.navButton}>Início</Text>
-              </TouchableOpacity>
-            )
-          })}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name='MainTabs'
+            component={MainTabs}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="MovieDetailsScreen"
+            component={MovieDetailsScreen}
+            options={({ navigation, route }) => ({
+              headerBackButtonDisplayMode: "minimal",
+              headerTitle: "",
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("MovieFormScreen", { movie: route.params?.movie })}
+                >
+                  <Text style={styles.navButton}>Editar</Text>
+                </TouchableOpacity>
+              )
+            })}
+          />
+          <Stack.Screen
+            name="MovieFormScreen"
+            component={MovieFormScreen}
+            options={({ navigation }) => ({
+              headerBackButtonDisplayMode: "minimal",
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => navigation.popToTop()}
+                >
+                  <Text style={styles.navButton}>Início</Text>
+                </TouchableOpacity>
+              )
+            })}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 
