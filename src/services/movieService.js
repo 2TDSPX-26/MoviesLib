@@ -6,3 +6,8 @@ export const getMovies = async () => {
     const response = await axios.get(API_URL)
     return response.data
 }
+
+export const deleteMovie = async (id) => {
+    const response = await axios.delete(`${API_URL}/${id}`)
+    return response.data
+}

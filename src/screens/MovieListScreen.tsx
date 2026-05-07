@@ -14,10 +14,12 @@ import { useCallback } from 'react'
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import Entypo from '@expo/vector-icons/Entypo';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import MovieRow, { Movie } from "../components/MovieRow";
 // import movies from "../data/movies.json"
-import { getMovies } from "../services/movieService";
+import { deleteMovie, getMovies } from "../services/movieService";
 
 export default function MovieListScreen() {
     const navigation = useNavigation()
@@ -29,23 +31,42 @@ export default function MovieListScreen() {
         select: (data) => data.sort((a: Movie, b: Movie) => a.title.localeCompare(b.title)),
     })
 
-    const renderHiddenItem = (data) => (
-        <TouchableOpacity
-            style={styles.deleteButton}
-            onPress={() => {
-                Alert.alert(
-                    "Confirmar Exclusão",
-                    "Tem certeza que deseja excluir esse filme?",
-                    [
-                        {text: "Cancelar", style: "cancel"},
-                        {text: "Excluir", style: "destructive", onPress: () => {}},
-                    ],
-                    { cancelable: true }
-                )
-            }}
-        >
-            <Text style={styles.deleteButtonText}>Excluir</Text>
-        </TouchableOpacity>
+    const deleteRow = async (movieId: string) => {
+        try {
+            await deleteMovie(movieId)
+            queryClient.invalidateQueries({ queryKey: ["movies"] })
+        } catch (error) {
+            Alert.alert("Erro", "Não foi possível excluir o filme")
+        }
+    }
+
+    const renderHiddenItem = (data: any) => (
+        <View style={{flexDirection: 'row', height:'100%', justifyContent: 'space-between'}}>
+            <TouchableOpacity
+                style={[styles.hiddenButton, {backgroundColor: '#35abeb'}]}
+                onPress={() => navigation.navigate('MovieFormScreen', {movie: data.item})}
+            >
+                <MaterialCommunityIcons name="movie-open-edit" size={24} color="white" />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={[styles.hiddenButton, {backgroundColor: '#EB4435'}]}
+                onPress={() => {
+                    Alert.alert(
+                        "Confirmar Exclusão",
+                        "Tem certeza que deseja excluir esse filme?",
+                        [
+                            {text: "Cancelar", style: "cancel"},
+                            {text: "Excluir", style: "destructive", onPress: () => deleteRow(data.item.id)},
+                        ],
+                        { cancelable: true }
+                    )
+                }}
+            >
+                {/* <Text style={styles.deleteButtonText}>Excluir</Text> */}
+                <Entypo name="trash" size={24} color="white" />
+            </TouchableOpacity>
+        </View>
     )
 
     useFocusEffect(
@@ -83,18 +104,31 @@ export default function MovieListScreen() {
                         </Text>
                     </TouchableOpacity>
                 </View>
-                <FlatList
+                <SwipeListView
                     style={styles.list}
                     data={movies}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({item}) => (
-                        <TouchableOpacity
+                        <Pressable
                             onPress={() => navigation.navigate('MovieDetailsScreen', { movie: item })}
                         >
                             <MovieRow movie={item}/>
-                        </TouchableOpacity>
+                        </Pressable>
                     )}
                     ItemSeparatorComponent={() => <View style={styles.separator}></View>}
+                    showsVerticalScrollIndicator={false}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={false} // Mostra o loading apenas no pull
+                            onRefresh={refetch} // Chama refetch quando faz o pull
+                            colors={['#EB4435']} //Cor do loading no Android
+                            tintColor='#EB4435' //Cor do loading no iOS
+                        />
+                    }
+                    renderHiddenItem={renderHiddenItem}
+                    rightOpenValue={-75} //Largura do botão de exclusão
+                    leftOpenValue={75}
+                    // disableRightSwipe={true}
                 />
             </SafeAreaView>
         </SafeAreaProvider>
@@ -102,9 +136,22 @@ export default function MovieListScreen() {
 }
 
 const styles = StyleSheet.create({
-    center: {},
-    deleteButtonText: {},
-    deleteButton: {},
+    center: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    deleteButtonText: {
+        color: 'white',
+        fontWeight: 'bold'
+    },
+    hiddenButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 75,
+        alignSelf: 'flex-end',
+        height: '100%'
+    },
     formButton: {
         color: '#eb4435',
         fontSize: 32,
