@@ -28,7 +28,12 @@ export default function App() {
               headerTitle: "",
               headerRight: () => (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("MovieFormScreen", { movie: route.params?.movie })}
+                  onPress={() => navigation.navigate("MovieFormScreen", {
+                    movie: route.params?.movie,
+                    onSave: (updatedMovie) => {
+                      navigation.setParams({ movie: updatedMovie })
+                    }
+                  })}
                 >
                   <Text style={styles.navButton}>Editar</Text>
                 </TouchableOpacity>
